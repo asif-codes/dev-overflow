@@ -5,50 +5,54 @@ import NoResult from "@/components/shared/NoResult";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
+import { getQuestions } from "@/lib/actions/question.action";
 import Link from "next/link";
 
-const questions = [
-  {
-    _id: "1",
-    title: "How do I use Next.js?",
-    tags: [
-      { _id: "1", name: "Next.js" },
-      { _id: "2", name: "React" },
-      { _id: "3", name: "JavaScript" },
-    ],
-    author: {
-      _id: "123",
-      name: "John Doe",
-      picture: "https://example.com/profile.jpg",
-    },
-    upvotes: 100000,
-    views: 100000 ,
-    answers: [
-      { _id: "a1", text: "You can use Next.js by..." },
-      { _id: "a2", text: "Another way is to..." },
-    ],
-    createdAt: new Date("2024-02-01T00:00:00.000Z"),
-  },
-  {
-    _id: "2",
-    title: "How to center a div?",
-    tags: [
-      { _id: "4", name: "CSS" },
-      { _id: "5", name: "HTML" },
-    ],
-    author: {
-      _id: "456",
-      name: "Jane Smith",
-      picture: "https://example.com/profile2.jpg",
-    },
-    upvotes: 5,
-    views: 50,
-    answers: [{ _id: "a3", text: "Use flexbox..." }],
-    createdAt: new Date("2024-03-15T12:30:00.000Z"),
-  },
-];
+// const questions = [
+//   {
+//     _id: "1",
+//     title: "How do I use Next.js?",
+//     tags: [
+//       { _id: "1", name: "Next.js" },
+//       { _id: "2", name: "React" },
+//       { _id: "3", name: "JavaScript" },
+//     ],
+//     author: {
+//       _id: "123",
+//       name: "John Doe",
+//       picture: "https://example.com/profile.jpg",
+//     },
+//     upvotes: 100000,
+//     views: 100000,
+//     answers: [
+//       { _id: "a1", text: "You can use Next.js by..." },
+//       { _id: "a2", text: "Another way is to..." },
+//     ],
+//     createdAt: new Date("2024-02-01T00:00:00.000Z"),
+//   },
+//   {
+//     _id: "2",
+//     title: "How to center a div?",
+//     tags: [
+//       { _id: "4", name: "CSS" },
+//       { _id: "5", name: "HTML" },
+//     ],
+//     author: {
+//       _id: "456",
+//       name: "Jane Smith",
+//       picture: "https://example.com/profile2.jpg",
+//     },
+//     upvotes: 5,
+//     views: 50,
+//     answers: [{ _id: "a3", text: "Use flexbox..." }],
+//     createdAt: new Date("2024-03-15T12:30:00.000Z"),
+//   },
+// ];
 
-const Page = () => {
+const Page = async () => {
+  const results = await getQuestions({});
+
+  console.log(results.questions);
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -80,8 +84,8 @@ const Page = () => {
       <HomeFilters />
 
       <div className="mt-10 flex w-full flex-col gap-6">
-        {questions.length > 0 ? (
-          questions.map((question) => (
+        {results.questions.length > 0 ? (
+          results.questions.map((question) => (
             <QuestionCard
               key={question._id}
               _id={question._id}
