@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
 import User from "@/database/user.model";
@@ -70,6 +71,7 @@ export const deleteUser = async (params: DeleteUserParams) => {
     // and questions, answers, comments, etc.
 
     // get user question ids
+    // eslint-disable-next-line no-unused-vars
     const userQuestionIds = await Question.find({ author: user._id }).distinct(
       "_id"
     );

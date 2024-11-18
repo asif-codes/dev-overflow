@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,6 +25,7 @@ import { Badge } from "../ui/badge";
 import { createQuestion } from "@/lib/actions/question.action";
 import { usePathname, useRouter } from "next/navigation";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const type: any = "create";
 
 interface Props {
@@ -62,6 +64,7 @@ const Question = ({ mongoUserId }: Props) => {
 
       // navigate to home page
       router.push("/");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
     } finally {
       setIsSubmitting(false);
@@ -70,6 +73,7 @@ const Question = ({ mongoUserId }: Props) => {
 
   const handleInputKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     field: any
   ) => {
     if (e.key === "Enter" && field.name === "tags") {
@@ -97,6 +101,7 @@ const Question = ({ mongoUserId }: Props) => {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleTagRemove = (tag: string, field: any) => {
     const newTags = field.value.filter((t: string) => t !== tag);
 

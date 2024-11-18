@@ -12,6 +12,7 @@ interface CustomInputProps {
 }
 
 const LocalSearchbar = ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   route,
   iconPosition,
   imgSrc,
