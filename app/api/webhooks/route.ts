@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   // add signing secret to my .env.local
-  const SIGNING_SECRET = process.env.NEXT_CLERK_SIGINING_SECRET;
+  const SIGNING_SECRET = process.env.SIGNING_SECRET;
 
   if (!SIGNING_SECRET) {
     throw new Error(
