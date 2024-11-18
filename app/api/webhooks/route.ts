@@ -5,7 +5,7 @@ import { WebhookEvent } from "@clerk/nextjs/server";
 import { createUser, deleteUser, updateUser } from "@/lib/actions/user.action";
 import { NextResponse } from "next/server";
 
-export default async function POST(req: Request) {
+export async function POST(req: Request) {
   // add signing secret to my .env.local
   const SIGNING_SECRET = process.env.NEXT_CLERK_SIGINING_SECRET;
 
